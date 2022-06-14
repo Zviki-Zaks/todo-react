@@ -7,9 +7,19 @@ export default class TodoApp extends Component {
     state = {
         todos: null
     }
-    async componentDidMount() {
+    componentDidMount() {
+        this.loadTodos()
+    }
+
+    loadTodos = async () => {
         const todos = await todoService.query()
         this.setState({ todos: todos })
+
+    }
+
+    removeTodo = async (todoId) => {
+        await todoService.remove(todoId)
+        this.loadTodos()
     }
 
     render() {
@@ -18,7 +28,7 @@ export default class TodoApp extends Component {
         return (
             <section>
                 <h1>TodoApp</h1>
-                {todos && <TodoList todos={todos} />}
+                {todos && <TodoList todos={todos} removeTodo={this.removeTodo} />}
             </section>
         )
     }

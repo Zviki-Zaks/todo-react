@@ -8,7 +8,7 @@ export default class TodoList extends Component {
         const todos = this.props.todos
         return (
             <section>
-                {todos.map(todo => <TodoPreview todo={todo} key={todo._id} />)}
+                {todos.map(todo => <TodoPreview todo={todo} key={todo._id} removeTodo={this.props.removeTodo} />)}
             </section>
         )
     }

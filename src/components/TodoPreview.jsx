@@ -1,8 +1,11 @@
 import React from 'react'
 
 export default function TodoPreview(props) {
-    const { todo } = props
+    const { todo, removeTodo } = props
     return (
-        <section>{todo.txt}</section>
+        <section className="todo-preview">
+            <button onClick={() => removeTodo(todo._id)}>x</button>
+            <p>{todo.txt}</p>
+        </section>
     )
 }

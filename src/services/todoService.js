@@ -8,8 +8,6 @@ export const todoService = {
     getEmptyTodo,
 }
 
-
-
 const KEY = 'TODO_REACT'
 
 // _createTodos()
