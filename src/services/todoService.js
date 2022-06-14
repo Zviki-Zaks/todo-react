@@ -8,15 +8,22 @@ export const todoService = {
     getEmptyTodo,
 }
 
-const todos = [
-    { _id: '45687', txt: 'Do This', isDone: true },
-    { _id: '456324', txt: 'Do That', isDone: false },
-]
+
 
 const KEY = 'TODO_REACT'
 
+// _createTodos()
+
 async function query() {
-    return await storageService.query(KEY)
+    let todos = await storageService.query(KEY)
+    if (!todos || !todos.length) {
+        todos = [
+            { _id: '45687', txt: 'Do This', isDone: true },
+            { _id: '456324', txt: 'Do That', isDone: false },
+        ]
+        storageService.postMany(KEY, todos)
+    }
+    return todos
 }
 
 async function getById(todoId) {
@@ -39,3 +46,16 @@ function getEmptyTodo() {
         isDone: false,
     }
 }
+
+// function _createTodos() {
+//     console.log('create')
+//     let todos = JSON.parse(localStorage.getItem(KEY) || 'null')
+//     console.log('todos', todos)
+//     if (!todos || !todos.length) {
+//         todos = [
+//             { _id: '45687', txt: 'Do This', isDone: true },
+//             { _id: '456324', txt: 'Do That', isDone: false },
+//         ]
+//     }
+//     localStorage.setItem(KEY, JSON.stringify(todos))
+// }
