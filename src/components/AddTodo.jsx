@@ -1,4 +1,3 @@
-import { thisExpression } from '@babel/types'
 import React, { Component, createRef } from 'react'
 
 export default class AddTodo extends Component {
@@ -9,13 +8,8 @@ export default class AddTodo extends Component {
 
     inputRef = createRef()
 
-    componentDidMount() {
-        console.log(this.props.todo)
-    }
-
     componentDidUpdate(prevProps) {
         if (prevProps.todo !== this.props.todo) {
-            console.log('update')
             const txt = this.props.todo?.txt || ''
             this.setState({ txt })
             if (txt) this.inputRef.current.focus()
@@ -30,7 +24,6 @@ export default class AddTodo extends Component {
 
     addTodo = async () => {
         const { txt } = this.state
-        console.log('invoked')
         if (txt.length <= 0) return this.onBlurInput()
         await this.props.saveTodo(txt)
         this.setState({ txt: '' })
@@ -44,7 +37,6 @@ export default class AddTodo extends Component {
     }
 
     render() {
-        console.log('add render')
         const { txt } = this.state
         return (
             <section className="add-todo">
