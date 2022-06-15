@@ -48,7 +48,7 @@ export default class TodoApp extends Component {
         return (
             <section>
                 <h1>TodoApp</h1>
-                <AddTodo saveTodo={this.saveTodo} todo={selectedTodo} />
+                <AddTodo saveTodo={this.saveTodo} selectTodo={this.selectTodo} todo={selectedTodo} />
                 {todos && <TodoList todos={todos} removeTodo={this.removeTodo} selectTodo={this.selectTodo} />}
             </section>
         )
