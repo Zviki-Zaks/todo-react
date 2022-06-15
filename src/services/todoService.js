@@ -16,8 +16,8 @@ async function query() {
     let todos = await storageService.query(KEY)
     if (!todos || !todos.length) {
         todos = [
-            { _id: '45687', txt: 'Do This', isDone: true },
-            { _id: '456324', txt: 'Do That', isDone: false },
+            { _id: '45687', txt: 'Do this', isDone: true },
+            { _id: '456324', txt: 'Do that', isDone: false },
         ]
         storageService.postMany(KEY, todos)
     }

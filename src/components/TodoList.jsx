@@ -5,10 +5,10 @@ export default class TodoList extends Component {
 
 
     render() {
-        const todos = this.props.todos
+        const { todos, removeTodo, selectTodo } = this.props
         return (
             <section>
-                {todos.map(todo => <TodoPreview todo={todo} key={todo._id} removeTodo={this.props.removeTodo} />)}
+                {todos.map(todo => <TodoPreview todo={todo} key={todo._id} removeTodo={removeTodo} selectTodo={selectTodo} />)}
             </section>
         )
     }

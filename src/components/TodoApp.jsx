@@ -6,7 +6,8 @@ import TodoList from './TodoList'
 export default class TodoApp extends Component {
 
     state = {
-        todos: null
+        todos: null,
+        selectedTodo: null,
     }
     componentDidMount() {
         this.loadTodos()
@@ -23,24 +24,32 @@ export default class TodoApp extends Component {
         this.loadTodos()
     }
 
-    saveTodo = async (txt, todoId) => {
+    saveTodo = async (txt) => {
+        const { selectedTodo } = this.state
         console.log('txt', txt)
-        const todo = todoId ?
-            await todoService.getById(todoId)
+        const todo = selectedTodo ?
+            await todoService.getById(selectedTodo._id)
             : todoService.getEmptyTodo()
         todo.txt = txt
         await todoService.save(todo)
+        this.selectTodo()
         this.loadTodos()
+    }
+
+    selectTodo = async (todoId) => {
+        console.log('todoId', todoId)
+        const todo = await todoService.getById(todoId)
+        this.setState({ selectedTodo: todo })
     }
 
     render() {
         console.log('render')
-        const { todos } = this.state
+        const { todos, selectedTodo } = this.state
         return (
             <section>
                 <h1>TodoApp</h1>
-                <AddTodo saveTodo={this.saveTodo} />
-                {todos && <TodoList todos={todos} removeTodo={this.removeTodo} />}
+                <AddTodo saveTodo={this.saveTodo} todo={selectedTodo} />
+                {todos && <TodoList todos={todos} removeTodo={this.removeTodo} selectTodo={this.selectTodo} />}
             </section>
         )
     }
