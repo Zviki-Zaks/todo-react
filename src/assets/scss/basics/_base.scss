@@ -9,6 +9,12 @@ body {
     color: $black;
 }
 
+.App {
+    max-width: 400px;
+    min-width: 300px;
+    margin: 0 auto;
+}
+
 img {
     max-width: 100%;
 }

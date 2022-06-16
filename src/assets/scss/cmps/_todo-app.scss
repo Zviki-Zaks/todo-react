@@ -6,9 +6,12 @@
         background-color: $blue;
         color: $white;
         padding: 0.5em $padding;
-        margin-block-end: rem(10px);
+        // margin-block-end: rem(10px);
         .app-title {
             text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            word-spacing: 20px;
         }
     }
 }

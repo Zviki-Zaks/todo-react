@@ -10,7 +10,7 @@ export default function TodoPreview({ todo, removeTodo, selectTodo }) {
     return (
         <section className="todo-preview" onClick={() => selectTodo(todo._id)}>
             <button onClick={onRemove}>x</button>
-            <p>{todo.txt}</p>
+            <p className="txt">{todo.txt}</p>
         </section>
     )
 }

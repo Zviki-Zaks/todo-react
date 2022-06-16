@@ -48,8 +48,8 @@ export default class TodoApp extends Component {
                 <div className="app-head">
 
                     <h1 className="app-title">Todo App</h1>
-                    <AddTodo saveTodo={this.saveTodo} selectTodo={this.selectTodo} todo={selectedTodo} />
                 </div>
+                <AddTodo saveTodo={this.saveTodo} selectTodo={this.selectTodo} todo={selectedTodo} />
                 {todos && <TodoList todos={todos} removeTodo={this.removeTodo} selectTodo={this.selectTodo} />}
             </section>
         )
