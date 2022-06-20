@@ -1,0 +1,14 @@
+.todo-app {
+    margin: 0 auto;
+    .app-head {
+        background-color: $blue;
+        color: $white;
+        padding: 0.5em $padding;
+        .app-title {
+            text-transform: uppercase;
+            font-weight: 600;
+            letter-spacing: 2px;
+            word-spacing: 20px;
+        }
+    }
+}

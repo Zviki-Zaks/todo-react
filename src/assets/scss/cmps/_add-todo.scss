@@ -1,0 +1,33 @@
+.add-todo {
+    display: flex;
+    justify-content: space-between;
+    background-color: $white;
+    input {
+        text-align: start;
+        padding-block: 0.5em;
+        padding-inline-start: 1.5em;
+        border-radius: 5px;
+        border: none;
+        background-color: inherit;
+        flex-grow: 1;
+        font-size: inherit;
+        &:hover {
+            border: 1px solid darken($preview-bgc, $amount: 20);
+        }
+        &:focus-visible {
+            border: 1px solid darken($preview-bgc, $amount: 70);
+            outline: none;
+        }
+    }
+    button {
+        background-color: inherit;
+        width: 42px;
+        border: none;
+        color: inherit;
+        font-size: rem(30px);
+        border-radius: 3px;
+        &:hover {
+            box-shadow: inset 0 -1px 2px darken($preview-bgc, 70);
+        }
+    }
+}
