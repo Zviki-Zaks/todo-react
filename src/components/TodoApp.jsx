@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { todoService } from '../services/todoService'
+import { AddTodo } from './AddTodo'
 import { TodoList } from './TodoList'
 
 export const TodoApp = () => {
@@ -24,12 +25,22 @@ export const TodoApp = () => {
         const todo = await todoService.getById(todoId)
         setSelectedTodo(todo)
     }
+    const saveTodo = async (txt) => {
+        console.log('txt', txt)
+        const todo = todoService.getEmptyTodo()
+        todo.txt = txt
+        // setSelectedTodo({ ...selectedTodo, txt })
+        await todoService.save(selectedTodo)
+        loadTodos()
+    }
 
     return (
         <section className="todo-app">
             <div className="app-head">
                 <h1 >Todo app</h1>
+
             </div>
+            <AddTodo saveTodo={saveTodo} />
             {todos && <TodoList todos={todos} removeTodo={removeTodo} selectTodo={selectTodo} />}
         </section>
     )
