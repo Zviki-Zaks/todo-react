@@ -10,7 +10,6 @@ export const TodoApp = () => {
 
     useEffect(() => {
         loadTodos()
-
     }, [])
 
     const loadTodos = async () => {
@@ -27,10 +26,10 @@ export const TodoApp = () => {
     }
     const saveTodo = async (txt) => {
         console.log('txt', txt)
-        const todo = todoService.getEmptyTodo()
+        const todo = selectedTodo || todoService.getEmptyTodo()
         todo.txt = txt
-        // setSelectedTodo({ ...selectedTodo, txt })
-        await todoService.save(selectedTodo)
+        await todoService.save(todo)
+        setSelectedTodo(null)
         loadTodos()
     }
 
@@ -40,7 +39,7 @@ export const TodoApp = () => {
                 <h1 >Todo app</h1>
 
             </div>
-            <AddTodo saveTodo={saveTodo} />
+            <AddTodo saveTodo={saveTodo} txt={selectedTodo?.txt} selectTodo={selectTodo} />
             {todos && <TodoList todos={todos} removeTodo={removeTodo} selectTodo={selectTodo} />}
         </section>
     )
