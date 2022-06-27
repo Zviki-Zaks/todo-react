@@ -1,3 +1,5 @@
 # Todo - React App
 
-Simpale todo app
+A simple todo app is written with react.
+
+The Master branch use class components and the hooks branch is the same but with hooks.
